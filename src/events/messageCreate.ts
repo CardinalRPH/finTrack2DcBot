@@ -1,16 +1,38 @@
 import { Client } from "discord.js";
+import prefixCommand from "../interactions/messages";
 
+const PREFIX = "!"
 export default (client: Client) => {
-    client.on("messageCreate", (message) => {
-        if (message.inGuild()) {
-            // return false with emp
+    client.on("messageCreate", async (message) => {
+        if (message.author.bot) return
+        if (message.inGuild()) return
+
+        if(!message.content.startsWith(PREFIX)) return
+
+        const args = message.content.slice(PREFIX.length).trim().split(/\s+/)
+
+        const commandName = args.shift()?.toLocaleLowerCase();
+
+        if(!commandName) return
+
+        const command = prefixCommand.find((cmd)=>cmd.name === commandName)
+        
+        if(!command) return
+
+        try {
+            await command.execute(message, args)
+        } catch (error) {
+            console.error(error)
+
+            await message.reply("Something went wrong")
         }
 
+        
     })
 }
 
-//message prefix is !fin_p <message> 
-// list message 
+//message prefix is !fin_p <message>
+// list message
 // !fin_cat = show available categories
 // !fin_inv = show all invest with value
 // !fin_wal = show wallet with value
@@ -20,3 +42,4 @@ export default (client: Client) => {
 // !fin_spd = show top 5 spd by wallet and category
 
 // !fin_help = show help function
+// !fin_ping

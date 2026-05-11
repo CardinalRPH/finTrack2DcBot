@@ -12,6 +12,7 @@ export default (client: Client) => {
 
         if(interaction.inGuild()) {
             // retunrn false emph
+            return
         }
 
         const command = commands.find(
