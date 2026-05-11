@@ -43,3 +43,7 @@ export default (client: Client) => {
 
 // !fin_help = show help function
 // !fin_ping
+
+// !fn_aidd 20000 makan bca
+// !fin_budget 202605
+// !fin_transfer 50000 bca jago
