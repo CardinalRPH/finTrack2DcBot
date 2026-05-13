@@ -1,0 +1,1 @@
+export type transType = "INCOME" | "OUTCOME" | "TRANSFER"

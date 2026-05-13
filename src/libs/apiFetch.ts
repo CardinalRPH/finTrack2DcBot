@@ -1,5 +1,7 @@
 const API_URL = process.env.API_URL!;
 
+
+const apiKey = process.env.DISCORD_BOT_KEY
 export async function apiFetch<T>(
     path: string,
     options?: RequestInit,
@@ -12,7 +14,7 @@ export async function apiFetch<T>(
 
             headers: {
                 "Content-Type": "application/json",
-
+                "x-api-key": apiKey!,
                 ...(options?.headers || {}),
             },
         }
