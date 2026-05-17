@@ -28,7 +28,6 @@ const fin_inv: PrefixCommand = {
                 .setColor('#2ecc71') // Green color for growth/finance
                 .setTimestamp();
 
-            // Calculate total portfolio value
             let totalPortfolioValue = 0;
 
             const fields = data.map(inv => {
@@ -46,7 +45,6 @@ const fin_inv: PrefixCommand = {
 
             investmentEmbed.addFields(fields);
 
-            // Add total summary to footer or as a single field
             const formattedTotal = formatToRupiah(totalPortfolioValue)
 
             investmentEmbed.setFooter({

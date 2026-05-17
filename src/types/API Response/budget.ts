@@ -13,4 +13,7 @@ export type budgetType = {
     totalBudget: number;
 }
 
-export type budgetDate = number
+export type budgetAvailDate = {
+    month: number
+    year: number
+}

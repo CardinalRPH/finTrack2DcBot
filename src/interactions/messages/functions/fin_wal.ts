@@ -53,7 +53,7 @@ const fin_wal: PrefixCommand = {
     },
 };
 
-function getWalletEmoji(type: walletEnumType): string {
+const getWalletEmoji = (type: walletEnumType): string => {
     switch (type) {
         case "BANK": return "🏦";
         case "E_WALLET": return "💳";
